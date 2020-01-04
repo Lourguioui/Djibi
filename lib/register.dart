@@ -14,10 +14,12 @@ class RegisterState extends State<Register> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        
         child: ListView(
           children: <Widget>[
-            Image(image: AssetImage('assets/images/Logo.png')),
+            Image(
+              image: AssetImage('assets/images/Logo.png'),
+              height: 200.0,
+            ),
             Padding(
               padding: EdgeInsets.only(
                   top: 0.0, right: 45.0, left: 45.0, bottom: 20.0),
@@ -32,7 +34,7 @@ class RegisterState extends State<Register> {
                       validator: (input) => !input.contains('@')
                           ? 'not a valide email adresse'
                           : null,
-                      onSaved: (input) => _email = input,
+                      
                     ),
                     TextFormField(
                       decoration: InputDecoration(
@@ -43,7 +45,7 @@ class RegisterState extends State<Register> {
                       validator: (input) => input.length < 8
                           ? 'You should enter 8 caracters at least'
                           : null,
-                      onSaved: (input) => _password = input,
+                      
                     ),
                     GestureDetector(
                       child: Container(
@@ -87,6 +89,25 @@ class RegisterState extends State<Register> {
                         ),
                       ),
                     ),
+                    Container(
+                      padding: EdgeInsets.only(top : 30.0),
+                      child: Column(
+                        children: <Widget>[
+                          Text('Vous avez deja un compte?'),
+                          FlatButton(
+                            child: Text(
+                              'Connectez vous',
+                              style: TextStyle(
+                                color: Color(0xFFA72BFA)
+                              ),
+                            ),
+                            onPressed: (){
+                              Navigator.pushNamed(context,'/login');
+                            },
+                          ),
+                        ],
+                      ),
+                    )
                     /*Padding(
                         padding: const EdgeInsets.only(top: 45.0, right: 45.0, left: 45.0, bottom: 8.0),
                         child: RaisedButton(
